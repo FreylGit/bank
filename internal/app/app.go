@@ -38,5 +38,6 @@ func (a *App) initRouter() chi.Router {
 	r.Post("/accounts/{id}/deposit", accounts.DepositHandler(a.sp.AccountBankService()))
 	r.Post("/accounts/{id}/withdraw", accounts.WithdrawHandler(a.sp.AccountBankService()))
 	r.Get("/accounts/{id}/balance", accounts.BalanceHandler(a.sp.AccountBankService()))
+
 	return r
 }
