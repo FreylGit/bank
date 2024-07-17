@@ -1,7 +1,6 @@
 package app
 
 import (
-	"bank/api/hello_handler"
 	"bank/internal/service_provider"
 	"bank/internal/transport/rest/accounts"
 	"github.com/go-chi/chi/v5"
@@ -34,7 +33,7 @@ func (a *App) Start() {
 func (a *App) initRouter() chi.Router {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
-	r.Get("/", hello_handler.Handler)
+
 	r.Post("/accounts", accounts.CreateAccountHandler(a.sp.AccountBankService()))
 	r.Post("/accounts/{id}/deposit", accounts.DepositHandler(a.sp.AccountBankService()))
 	r.Post("/accounts/{id}/withdraw", accounts.WithdrawHandler(a.sp.AccountBankService()))
